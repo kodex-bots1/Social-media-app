@@ -1,13 +1,16 @@
 // import React from 'react'
-import { assets } from '../assets/assets';
+import { assets, dummyUserData } from '../assets/assets';
 import { useNavigate } from 'react-router-dom';
 import Menuitems from './Menuitems';
-import { CirclePlus } from 'lucide-react';
+import { CirclePlus, LogOut } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { UserButton, useClerk } from '@clerk/react'
 
 const sidebar = ({sidebarOpen, setSidebarOpen}) => {
 
     const navigate = useNavigate()
+    const user = dummyUserData
+    const { signOut } = useClerk()
   return (
     <div className={`w-60 xl:w-72 bg-white border-r border-gray-200 flex flex-col justify-between item-center max-sm:aboslute top-0 left-0 bottom-0-20 ${sidebarOpen ? 'translate-x-0' : 'max-sm:-translate-x-full'} transition-all duration-300 ease-in-out`}>
 
@@ -23,6 +26,16 @@ const sidebar = ({sidebarOpen, setSidebarOpen}) => {
             </Link>
         </div>
 
+        <div className="w-full border-t border-gray-200 p-4 px-7 flex items-center justify-between">
+            <div className="flex items-center gap-2 cursor-pointer">
+              <UserButton />
+              <div className=''>
+                <h1 className='flex text-gray-600 bold cursor-pointer'>{user.full_name}</h1>
+                <p className='flex text-brown-550 text-xs'>@{user.username}</p>
+              </div>
+            </div>
+            <LogOut onClick={signOut} className='w-4.5 text-gray-400 hover:text-gray-700 transistion cursor-pointer' />
+        </div>
     </div>
   )
 }

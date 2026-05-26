@@ -1,17 +1,35 @@
-import React from 'react'
+import { dummyPostsData } from '../assets/assets'
+import { useState } from 'react'
+import { useEffect } from 'react'
 
 const feed = () => {
-  return (
-    <div className='w-full'></div>
-    // <div className='w-screen h-screen flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500'>
-    //   <div className='bg-white rounded-lg shadow-lg p-8 flex flex-col items-center'>
-    //     <img src={assets.logo} alt="Logo" className='w-20 h-20 mb-4' />
-    //     <h1 className='text-2xl font-bold mb-4'>Welcome to MyApp</h1>
-    //     <p className='text-gray-600 mb-6 text-center'>Sign in to access your personalized feed and connect with friends.</p>
-    //     <SignIn path="/sign-in" routing="path" signUpUrl="/sign-up" />
-    //   </div>
-    // </div>
-  )
+
+  const [feeds, setfeeds] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  const fetchFeeds = async () => {
+    setfeeds(dummyPostsData)
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    fetchFeeds()
+  }, [])
+  return !loading ? (
+    <div className='h-full overflow-y-scroll no-scrollbar py-10 xl:pr-5 flex items-center justify-center xl:gap-8'>
+      <div>
+        <h1>Stories here</h1>
+        <div className="p-4 grid"></div>
+      </div>
+
+      <div>
+        <div>
+          <h1>Sponsored posts</h1>
+        </div>
+          <h1>Recent messages</h1>
+      </div>
+    </div>
+  ) : <loading />
 }
 
 export default feed;
