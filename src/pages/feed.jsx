@@ -2,7 +2,7 @@ import React from 'react'
 
 const feed = () => {
   return (
-    <div></div>
+    <div className='w-full'></div>
     // <div className='w-screen h-screen flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500'>
     //   <div className='bg-white rounded-lg shadow-lg p-8 flex flex-col items-center'>
     //     <img src={assets.logo} alt="Logo" className='w-20 h-20 mb-4' />

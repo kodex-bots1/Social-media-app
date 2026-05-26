@@ -1,5 +1,3 @@
-import React from 'react'
-
 const loading = ({height = '100vh'}) => {
   return (
     <div>
@@ -10,4 +8,4 @@ const loading = ({height = '100vh'}) => {
   )
 }
 
-export default loading
+export default loading;

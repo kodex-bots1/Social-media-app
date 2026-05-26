@@ -6,8 +6,10 @@ import { useState } from 'react'
 import { dummyUserData } from '../assets/assets'
 
 const layout = () => {
-  const user = dummyUserData[0];
+
+  const user = dummyUserData
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  
   return user ? (
     <div className='w-full flex h-screen'>
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen}/>
@@ -19,12 +21,12 @@ const layout = () => {
       sidebarOpen ?
       <X className="absolute top-3 right-3 p-2 z-100 bg-white rounded-md shadow w-10 h-10 text-gray-600 sm:hidden" onClick={() => setSidebarOpen(false)}/>
       :
-      <Menu className="absolute top-3 right-3 p-2 z-100 bg-white rounded-md shadow w-10 h-10 text-gray-600 sm:hidden" onClick={() => setSidebarOpen(true)}/>
+      < Menu className="absolute top-3 right-3 p-2 z-100 bg-white rounded-md shadow w-10 h-10 text-gray-600 sm:hidden" onClick={() => setSidebarOpen(true)}/>
     }
     </div>
   ) : (
     <h1>Loading...</h1>
-  )
+      )
 }
 
 export default layout;
